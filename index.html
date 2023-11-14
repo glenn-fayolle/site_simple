@@ -1,11 +1,369 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Recherche-stream est le meilleur moteur de recherche de streaming gratuit. Trouvez gratuitement et facilement des films, séries et animés en ligne.">
+
+    <title>Moteur de recherche de streaming gratuit - Recherche-stream</title>
+    <link rel="shortcut icon" type="image/png" href="https://imagestockage.000webhostapp.com/logo.png">
+
+
+    <!--ressources externes-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4219996241558847"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+
+    <!--    ressources internes -->
+    <link rel="stylesheet" type="text/css" href="ressources/style/barre.css">
+    <link rel="stylesheet" type="text/css" href="ressources/style/accueil.css">
+
+    <script defer src="ressources/js/barre.js"></script>
+    <script src="ressources/js/scrollE2.js"></script>
+
+    <script defer src="ressources/js/accueil.js"></script>
+
+
 
 </head>
+
 <body>
-coucou
+<header>
+    <nav>
+        <div class="nav_accueil">
+            <img src="https://imagestockage.000webhostapp.com/logo.webp" alt="Logo - recherche-stream" class="logo"
+                 id="logo">
+            <div class="nav_accueil_deux">
+                <a href="./">Recherche-stream</a>
+                <span class="barre"></span>
+            </div>
+        </div>
+        <div class="menu">
+            <img src="https://imagestockage.000webhostapp.com/menu.webp" alt="Menu burger" class="menuImage"
+                 id="menuBurger">
+            <div class="responsive" id="cache">
+
+                <div class="categories">
+                    <div class="autre">
+                        <a href="./?cate=films" title="rechercher un film">Films</a>
+                    </div>
+                    <div class="autre">
+                        <a href="./?cate=series" title="rechercher une série">Séries</a>
+                    </div>
+                    <div class="autre">
+                        <a href="./?cate=animes" title="rechercher un animé">Animés</a>
+                    </div>
+                </div>
+
+                <div class="plus">
+                    <div class="autre">
+                        <a href="?controleur=FunFactControleur"><img src="https://imagestockage.000webhostapp.com/fun-fact.webp"
+                                                                     class="funfact" title="voir les fun-facts du streaming"></a>
+                    </div>
+                    <div class="autre">
+                        <a href="./?controleur=AllControleur&action=ajouterSite">Ajouter un site</a>
+                    </div>
+                    <div class="autre">
+                        <a href="./?controleur=AllControleur&action=envoyerContacter">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div class="darkWhite">
+    <button onclick="dark_white_mode()"><img src="https://imagestockage.000webhostapp.com/dark.webp" id="mode"></button>
+</div>
+
+
+<div class="container-fluide theOne">
+    <div class="container">
+        <article class="row first">
+            <article class="col-md-7">
+                <h1 class="affiche_tard1" id="change1">Rechercher un film gratuitement sur les meilleurs sites de
+                    streaming</h1>
+                <form class="search_container" action="./" method="get">
+                    <select name="cate" id="cate" autocomplete="off" onchange="change()">
+                        <option value="film">Film</option>
+                        <option value="serie">Série</option>
+                        <option value="anime">Animé</option>
+                    </select>
+
+                    <div class="lesdeux">
+                        <input type="text" required="required" placeholder="Entrez le nom d'un film ..."
+                               name="titre" id="titre" autocomplete="off" list="suggestion">
+                        <datalist id="suggestion" class="suggestion"></datalist>
+                        <button id="valider" type="submit"><img src="https://imagestockage.000webhostapp.com/loupe.webp"
+                                                                class="loupe" id="loupe"></button>
+                    </div>
+                    <input type="hidden" name="controleur" value="LienControleur">
+                </form>
+            </article>
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/fond.webp" alt="redirection de lien instantané"
+                         class="fond">
+                </div>
+            </div>
+
+        </article>
+    </div>
+</div>
+
+
+<div class="horizon premierH"></div>
+
+<div class="container-fluide first">
+    <div class="container">
+        <article class="row first">
+            <article class="col-md-10 gros">
+                Utilisez un moteur de recherche de streaming nouvelle générarion Gratuit, Simple et Rapide !
+            </article>
+        </article>
+    </div>
+</div>
+
+<div class="horizon"></div>
+
+
+<div class="grand container-fluide">
+    <div class="container">
+
+        <article class="row justify-content-center align-items-center">
+            <article class="col-md-7 col-sm-10 col-xs-10 col-10 text-col">
+                <p><b>Bienvenue sur Recherche-stream</b>, votre moteur de recherche de streaming en ligne.
+                    Vous cherchez à regarder vos films, séries ou animés préférés sans tracas ?
+                    Ne cherchez plus ! Notre plateforme vous offre une expérience de recherche intuitive et
+                    efficace pour trouver rapidement le contenu que vous désirez. Avec Recherche-stream,
+                    la navigation dans l'univers du streaming devient un jeu d'enfant, vous permettant
+                    de profiter pleinement de vos divertissements préférés.</p>
+            </article>
+
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/moteur.webp" alt="simplicité image">
+                </div>
+            </div>
+
+        </article>
+
+
+        <article class="row flex-row-reverse justify-content-center align-items-center">
+            <article class="col-md-7 col-sm-10 col-xs-10 col-10 text-col">
+                <p><b>Notre moteur de recherche</b> a été spécialement conçu pour vous offrir une expérience fluide
+                    et agréable. Il vous suffit de saisir le titre du film, de la série ou de l'animé que vous
+                    recherchez,
+                    et notre algorithme de recherche avancé vous présentera instantanément les résultats pertinents.
+                </p>
+            </article>
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/simple.webp" alt="redirection de lien instantané">
+                </div>
+            </div>
+        </article>
+
+
+        <article class="row justify-content-center align-items-center">
+            <article class="col-md-7 col-sm-10 col-xs-10 col-10">
+                <p><b>Gratuit et Simple </b>: Recherche-stream est totalement gratuit et sans inscription requise.
+                    Pas de frais cachés ni de tracas pour accéder au contenu que vous souhaitez regarder.
+                    Notre interface épurée et conviviale vous permet de trouver ce que vous cherchez en quelques clics
+                    seulement.
+                    Fini les recherches fastidieuses et les menus compliqués, nous faisons en sorte que votre expérience
+                    de streaming soit des plus simples et agréables.</p>
+            </article>
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/gratuit.webp" alt="api icone">
+                </div>
+            </div>
+        </article>
+
+
+        <article class="row flex-row-reverse justify-content-center align-items-center">
+            <article class="col-md-7 col-sm-10 col-xs-10 col-10 text-col">
+                <p><b>Une Diversité de Contenus</b> : Que vous soyez fan de films à grand succès, d'intrigues
+                    captivantes de séries
+                    télévisées ou d'histoires fantastiques d'animés, Recherche-stream a tout pour plaire.
+                    Notre moteur de recherche vous permet d'explorer une vaste bibliothèque de contenus, vous offrant
+                    une multitude
+                    d'options pour satisfaire vos envies de divertissement. Trouvez tout ce que vous désirez, du
+                    classique au plus récent, en quelques instants.</p>
+            </article>
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/divers.webp" alt="Qr code icone">
+                </div>
+            </div>
+        </article>
+
+        <article class="row justify-content-center align-items-center">
+            <article class="col-md-7 col-sm-10 col-xs-10 col-10 text-col">
+                <p><b>L'outil Incontournable </b>: Avec Recherche-stream, dites adieu aux tracas de recherche et de
+                    navigation.
+                    Notre moteur de recherche de streaming gratuit est votre allié pour accéder facilement à vos
+                    contenus préférés.
+                    Profitez d'une expérience de streaming fluide, sans publicités intrusives, et embarquez pour un
+                    voyage à t
+                    ravers un monde de divertissement sans limites. Recherche-stream, c'est l'outil incontournable pour
+                    tous les amateurs de streaming !</p>
+            </article>
+
+            <div class="col-md-5 col-sm-10 col-xs-10 col-10 limage">
+                <div class="int">
+                    <img src="https://imagestockage.000webhostapp.com/incon.webp" alt="Qr code icone">
+                </div>
+            </div>
+        </article>
+
+
+        <div class="horizon dernierH"></div>
+
+        <div class="container-fluide first">
+            <div class="container">
+                <article class="row justify-content-center align-items-center first">
+                    <article class="col-md-10 gros">
+                        N'attendez plus, plongez dans un océan de divertissement et profitez d'une recherche de
+                        streaming simplifiée avec Recherche-stream !
+                    </article>
+                </article>
+            </div>
+        </div>
+
+        <div class="horizon"></div>
+
+    </div>
+</div>
+
+<footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #1c2331">
+
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold">Recherche-stream</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: inherit; height: 2px"/>
+                    <p>
+                        Moteur de recherche de streaming nouvelle générarion Gratuit, Simple et Rapide !
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Outils</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: inherit; height: 2px"
+                    />
+                    <p>
+                        <a href="./" class="text-white">Films</a>
+                    </p>
+                    <p>
+                        <a href="./?cate=series" class="text-white">Séries</a>
+                    </p>
+                    <p>
+                        <a href="./?cate=animes" class="text-white">Animés</a>
+                    </p>
+                    <p>
+                        <a href="?controleur=FunFactControleur" class="text-white">Fun-facts</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Liens utiles</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: inherit; height: 2px"
+                    />
+                    <p>
+                        <a href="./?controleur=AllControleur&action=ajouterSite" class="text-white">proposer un site</a>
+                    </p>
+                    <p>
+                        <a href="./?controleur=AllControleur&action=afficherFAQ" class="text-white">F . A . Q</a>
+                    </p>
+                    <p>
+                        <a href="./?controleur=AllControleur&action=afficherML" class="text-white">Mentions Légales</a>
+                    </p>
+                    <p>
+                        <a href="./?controleur=AllControleur&action=afficherRemerciements" class="text-white">Remerciements</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: inherit; height: 2px"
+                    />
+                    <p><i class="fas fa-home mr-3"></i><a href="./?controleur=AllControleur&action=envoyerContacter" class="text-white">nous contacter</a>
+                    </p>
+                    <p><i class="fas fa-envelope mr-3"></i><a href="./?controleur=AllControleur&action=envoyerSignaler" class="text-white"> signaler un
+                        problème</a></p>
+                    <p><i class="fas fa-phone mr-3"></i><a href="./?controleur=AllControleur&action=ajouterSite" class="text-white">proposer un
+                        site</a></p>
+                    <p><i class="fas fa-print mr-3"></i><a href="mailto:recherche-stream@gmail.com" class="text-white">recherche-stream@gmail.com</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        Copyright © 2023
+        <a class="text-white" href="https://recherche-stream.fr/">Recherche-stream</a>
+        .Tous droits réservés.
+    </div>
+</footer>
+
+
+<script>
+    dict = {
+        ".search_container": "animate__fadeInLeft",
+        ".fond": "animate__fadeInRight",
+        ".grand img": ["animate__fadeInRight", "animate__fadeInLeft"],
+        "article p": "animate__fadeInUp",
+        ".gros": "animate__fadeInUp"
+    }
+
+    const scroll = new ScrollE2(dict).setTime(1)
+    scroll.init()
+</script>
 </body>
 </html>
